@@ -1,23 +1,20 @@
+import { Locator } from '@playwright/test';
 import { BasePage } from './base';
 
 
 export class MenuPage extends BasePage {
 
-  /**
-   * @param {string} name 
-   */
-  async addCoffeeToCart(name) {
+
+  async addCoffeeToCart(name: string) {
     await this.page.getByLabel(name, { exact: true }).click();
   }
 
-  /**
-   * @returns {Promise<import('@playwright/test').Locator>}
-   */
-  getTotal() {
+
+  getTotal(): Locator {
     return this.page.locator('.pay');
   }
 
-  async makeIrishCoffee() {
+  async makeIrishCoffee(): Promise<void> {
     await this.page.route('**/list.json', async route => {
       route.fulfill({
         status: 200, json: [{
@@ -34,11 +31,11 @@ export class MenuPage extends BasePage {
     )
   }
 
-  async stopMakingIrishCoffee() {
+  async stopMakingIrishCoffee(): Promise<void> {
     await this.page.unroute('**/list.json');
   }
 
-  async autoHandleExtraCoffee(decline=true){
+  async autoHandleExtraCoffee(decline = true): Promise<void> {
     const nahBtn = await this.page.getByText('Nah');
     const yesBtn = await this.page.getByText('of course');
 
