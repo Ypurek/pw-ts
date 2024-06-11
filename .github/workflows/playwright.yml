@@ -19,6 +19,10 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test --workers=8
+    - name: Publish Test Summary Results
+      if: always()
+      run: npx github-actions-ctrf playwright-report/test-results.json
+
     - uses: actions/upload-artifact@v4
       if: always()
       with:
