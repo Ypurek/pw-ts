@@ -15,3 +15,7 @@ I have tried to make project similar to my test project template in python: [Inf
 ## Development
 Despite I am a big fan of the PyCharm, this project was developed and tested in VS Code.
 It is pretty ok. Can get used to it.
+
+## Notes for future me
+- TypeScript is better then JS. Typing in methods makes the code looks like my Python code
+- 
